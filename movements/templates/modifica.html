@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}  {% endblock %}
+
+{% block contenido%}
+    <form action="/modifica/{{ registro['id'] }}" method="post"> <!-- action llama al punto de entrada @route("modifica/<id>") en views.py. con el metodo post-->
+        <div class="field">
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="Fecha" required value="{{ registro ['fecha'] }}"> <!-- required campo obligatorio de rellenar con el valor corresponde a la fecha-->   
+        </div>
+        <div>
+            <label for="concepto">Concepto:</label>
+            <input type="text" name="Concepto" value="{{ registro ['concepto'] }}">  <!-- registro 1 corresponde al concepto que "esta en views.py / @route modifica / c.execute('SELECT ...') -->
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <imput type="number" name="Cantidad" step="0.01" value="{{ registro ['cantidad'] }}"> <!-- step permite introducir decimales-->
+        </div>
+        <div class="field">
+            <input type="submit" name="aceptar"> <!-- crea un boton que hace un post para que toda la información se grabe en el servidor-->
+        </div>
+    </form>
+
+
+{% endblock %}

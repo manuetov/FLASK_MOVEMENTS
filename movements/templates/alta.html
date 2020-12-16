@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} <alta></alta> {% endblock %}
+
+{% block contenido%}
+    <form action="creaalta" method="post"> <!-- action llama al punto de entrada @route en views.py. con el metodo post-->
+        <div class="field">
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="Fecha" required> <!-- required campo obligatorio de rellenar -->   
+        </div>
+        <div>
+            <label for="concepto">Concepto:</label>
+            <input type="text" name="Concepto"> 
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <imput type="number" name="Cantidad" step="0.01"> <!-- step permite introducir decimales-->
+        </div>
+        <div class="field">
+            <input type="submit" name="aceptar">
+        </div>
+    </form>
+
+
+{% endblock %}

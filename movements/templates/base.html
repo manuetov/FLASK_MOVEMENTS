@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Gastos-Ingresos - {% block title %} {% endblock %} </title> <!-- GastosIngresos es la parte fija y lo que hay entre los bloques es la variable que aparece la otra plantilla
+        que esta en movementsList_html-->
+        <!--con el css damos estilo al html-->
+        <style> 
+            * {
+                font-family: 'Times New Roman', Times, serif;
+            }
+            header {
+                color: white;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <p>Boot Z 6 - Kakebo</p>
+        </header>>
+    
+    <setion>
+        {% block contenido %} {% endblock %}
+    </setion>
+
+    <footer>
+        &copy; 2020 -2021. todos los derechos reservados
+    </footer>
+    </body>
+</html>

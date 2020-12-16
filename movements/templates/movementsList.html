@@ -1,0 +1,32 @@
+{% extends 'base.html' %} <!-- hereda de base.htl es como un "import" Jinja2 es un motor de plantillas especializado en coger un fichero de html y transforamarlo en 
+    dinámico definiendole huecos rellenandolos con instrucciones y variables. Para esto se necesita una carpeta llamada templates que recibe 
+    variables de la funcion render_template() definida en el fichero views.py donde se definen las rutas y la lógica de la programación *py --> 
+
+{% block title %} Resumen mensual {% endblock %}} <!-- en el bloque title mete el titulo que aparece en el bloque del fichero base.html del cual hereda  --> 
+<!-- cuando queremos meterle instrucciones específicas de Jinja usamos los bloques usamos la llave-porcentaje y cuando le metemos variables la llave-llave-->
+
+{% block contenido %} <!-- bloque de contenido -->
+    <h1>Ingresos mensuales <a href="creaalta">Nuevo</a></h1>
+    {% if datos|length > 0 %} <!-- si hay movimientos saca la tabla y sino devuelve "no hay movimientos" -->   
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Concepto</th>
+                <th>Importe</th>
+            </tr>
+            {% for registro in datos %} <!-- importa de views.py la variable datos que es una lista-->
+            <tr>
+                <td><a href="modifica/{{ registro ['id'] }}">{{ registro['fecha']}}</a></td> <!-- id en el select - fecha hace un hipervinculo que apunta a id  -->
+                <td>{{ registro [1]}}</td> <!-- la celda [1] pertenece a la concepto -->
+                <td>{{ registro [2]}}</td> <!-- la celda [0] pertenece a la cantidad € -->
+            </tr>
+            {% endfor %} 
+            <tr>   
+                <td colspan="3">Total: {{total}}€</td> <!-- importa de views la variable total que es la suma en € del campo 2 de la lista datos en views.py -->
+            </tr>
+        </table>
+    {% else %}
+        <p> No hay movimientos </p>
+    {% endif %}
+{% endblock %}
+
